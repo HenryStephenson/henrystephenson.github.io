@@ -22832,7 +22832,9 @@
     ],
     "ligatures": [],
     "search": {
-      "terms": []
+      "terms": [
+        "google"
+      ]
     },
     "styles": [
       "brands"
@@ -54277,7 +54279,6 @@
       "terms": [
         "3d",
         "augment",
-        "google",
         "reality",
         "virtual"
       ]
