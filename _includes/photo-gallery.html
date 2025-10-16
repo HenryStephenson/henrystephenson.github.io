@@ -59,8 +59,10 @@ img {
 .caption-container {
   text-align: center;
   background-color: #222;
-  padding: 2px 16px;
+  padding: 8px 16px;
   color: white;
+  font-style: italic;
+  font-size: 16px;
 }
 
 .row:after {
@@ -85,6 +87,7 @@ img {
   opacity: 1;
 }
 </style>
+
 <body>
 
 <h1 style="text-align:center">Action Shots</h1>
@@ -148,78 +151,44 @@ img {
   <div class="caption-container">
     <p id="caption"></p>
   </div>
-
-  <!-- <div class="row">
-    <div class="column">
-      <img class="demo cursor" src="../assets/images/hadfield.JPG" style="width:100%" onclick="currentSlide(1)" alt="Chris Hadfield">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="../assets/images/gpa.PNG" style="width:100%" onclick="currentSlide(1)" alt="Academics">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="../assets/images/soccer-photo.jpg" style="width:100%" onclick="currentSlide(1)" alt="Soccer">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="../assets/images/wrestle.PNG" style="width:100%" onclick="currentSlide(1)" alt="Valedictorian Funny">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="../assets/images/piano.jpg" style="width:100%" onclick="currentSlide(1)" alt="Piano">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="../assets/images/igem.jpg" style="width:100%" onclick="currentSlide(1)" alt="iGEM Lab">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="../assets/images/keira.JPEG" style="width:100%" onclick="currentSlide(1)" alt="Dancing with Keira">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="../assets/images/randy_rettberg.JPG" style="width:100%" onclick="currentSlide(1)" alt="iGEM President">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="../assets/images/pipette.jpg" style="width:100%" onclick="currentSlide(1)" alt="Pipetting">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="../assets/images/igem_poster.jpg" style="width:100%" onclick="currentSlide(1)" alt="iGEM Poster">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="../assets/images/igem_win.JPG" style="width:100%" onclick="currentSlide(1)" alt="iGEM Win">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="../assets/images/nomic.PNG" style="width:100%" onclick="currentSlide(1)" alt="Nomic Startup">
-    </div>
-    <div class="column">
-      <img class="demo cursor" src="../assets/images/ipd_poster.JPG" style="width:100%" onclick="currentSlide(1)" alt="IPD Poster">
-    </div>
-  </div>
-</div> -->
+</div>
 
 <script>
-let slideIndex = 1;
+let slideIndex = Math.floor(Math.random() * 13) + 1; // pick a random slide 1–13
+
+// Captions for each photo (in the same order as the slides)
+const captions = [
+  "My brother and I meeting Commander Chris Hadfield",
+  "My academic excellence snapshot when applying for unviersities",
+  "My Durham FC portrait in grade 11",
+  "For my valedictorian video, my gym teacher agreed to do a wrestling skit",
+  "Playing piano for a McGill ball",
+  "Some laughs in the iGEM lab",
+  "Dancing with Keira, my girlfriend and best friend",
+  "Photo at SynBioBeta Conference with iGEM President Randy Rettberg",
+  "Questionable sterility in the lab",
+  "Presenting my iGEM poster at a McGill symposium",
+  "Winning moment at iGEM Competition in Paris",
+  "The Nomic team while I was interning",
+  "Presenting my poster from my time at Baker Lab at the IPD"
+];
+
 showSlides(slideIndex);
 
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
 function showSlides(n) {
-  let i;
   let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("demo");
   let captionText = document.getElementById("caption");
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
+  for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
   slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  //captionText.innerHTML = dots[slideIndex-1].alt;
+  captionText.innerHTML = captions[slideIndex-1];
 }
 </script>
     
