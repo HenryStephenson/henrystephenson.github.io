@@ -202,9 +202,10 @@ title: "Home"
         could detect biologically relevant signatures and biomarkers across diverse disease contexts.
       </p>
 
-      <img src="/assets/images/nomic.JPG" class="project-image" alt="Nomic Team" style="margin-left: 50px;">
-      <div class="image-caption" style="margin-left: 50px;">Me and the Nomic team while I was interning. The team has since grown to over double its size and has raised $42 million in an
-      over-subscribed Series B funding round. Nomic is the high-plex proteomics industry leader and has recently expanded to over 1000-plex assays.</div>
+      <center><img src="/assets/images/nomic.JPG" class="project-image" alt="Nomic Team" style="width: 80%; margin-left: 50px;"></center>
+      <center><div class="image-caption" style="margin-left: 50px;">Me and the Nomic team while I was interning. The team has since grown to over double its 
+        size and has raised $42 million in an over-subscribed Series B funding round. Nomic is the high-plex proteomics industry leader and has recently expanded 
+        to over 1000-plex assays.</div></center>
       <br>
       <br>
       
@@ -221,29 +222,40 @@ title: "Home"
     </div>
 
     <!-- Baker Lab -->
-    <h3 class="DropdownPoint" onclick="OpenDropdown(this)">&#11166; Baker Lab (IPD) — Protease Design Against Amyloid Fibres</h3>
+    <h3 class="DropdownPoint" onclick="OpenDropdown(this)">&#11166; Baker Lab (IPD) — Protease Design Against Amyloid Fibrils</h3>
     <div class="DropdownDiv">
-      <p>At the Baker Lab in Seattle I worked on a protein design workflow aimed at engineering proteases to target amyloidogenic proteins implicated in neurodegenerative disease. The design pipeline I used typically moves from generative backbone construction → sequence recovery → in silico filtering → structural validation:</p>
+      <p style="margin-left: 50px;">
+        At the Baker Lab in Seattle I worked on a protein design workflow aimed at engineering proteases to target amyloidogenic proteins implicated in neurodegenerative 
+        disease, type 2 diabetes, and related diseases. The design pipeline I used typically moves from generative backbone construction → sequence generation → 
+        in silico filtering → structural and enzymatic validation in-lab:
+      </p>
 
-      <ol>
-        <li><strong>RFDiffusion / generative backbone design</strong> — building candidate backbone geometries compatible with the desired active site or binding interface.</li>
+      <ol style="margin-left: 60px;">
+        <li><strong>RFDiffusion / generative backbone design</strong> — building candidate backbone geometries compatible with the desired active site or binding 
+          interface.</li>
         <li><strong>ProteinMPNN</strong> — running sequence design to propose amino-acid sequences that fold to the designed backbone.</li>
-        <li><strong>AlphaFold (AlphaFold3 / AF2/AF3)</strong> — structure prediction to validate whether the designed sequence actually folds to the target conformation and to assess confidence metrics (pLDDT, interface RMSD, etc.).</li>
-        <li><strong>Filtering</strong> — selecting top designs based on predicted stability, interface metrics, and retained catalytic geometry for proteolytic activity.</li>
+        <li><strong>AlphaFold (AlphaFold3 / AF2/AF3)</strong> — structure prediction to validate whether the designed sequence actually folds to the target 
+          conformation and to assess confidence metrics (pLDDT, interface RMSD, etc.).</li>
+        <li><strong>Filtering</strong> — selecting top designs based on predicted stability, interface metrics, and retained catalytic geometry for proteolytic 
+          activity.</li>
+        <li><strong>In-Lab Validation</strong> — Determining enzymatic activity of the proteases on the substrate using SPR and fluorescence spectroscopy.</li>
       </ol>
+      <br>
 
-      <p>My contributions included running design jobs, filtering and ranking candidates, and creating visualizations (PyMOL snapshots) of top designs. I also helped prepare sequences for downstream experimental testing and annotated designs for ease of reproduction. Below are placeholders so you can paste high-resolution images of the PyMOL structures and design figures.</p>
+      <p style="margin-left: 50px;">
+        My contributions included developing the entire design pipeline, running jobs, filtering and ranking candidates, creating visualizations (PyMOL) of top designs, 
+        and eventually in-lab validation. Below is a snapshot of the overall design pipeline:
+      </p>
 
-      <p>Suggested placeholders for Baker lab images (upload to <code>/assets/images/</code>):</p>
-      <img src="/assets/images/baker_design1.png" class="project-image" alt="Baker design 1 placeholder">
-      <div class="image-caption">Suggested: baker_design1.png — PyMOL image of designed protease (binding pose)</div>
+      <center><img src="/assets/images/design_pipeline.png" class="project-image" alt="Baker Design 1 Placeholder" style="margin-left: 50px;"></center>
+      <center><div class="image-caption" style="margin-left: 50px;">Design pipeline from initial backbone generation up to in-lab validation of proteolytic 
+        efficiency.</div></center>
 
-      <img src="/assets/images/baker_design2.png" class="project-image" alt="Baker design 2 placeholder">
-      <div class="image-caption">Suggested: baker_design2.png — catalytic site close-up or designed active site</div>
-
-      <p>Short workflow note you can expand on your site: after design and in silico filtering, we typically synthesize top candidates and test in vitro for cleavage of model amyloid substrates. Designs that show activity are iteratively optimized for specificity and stability.</p>
+      <center><img src="/assets/images/experimental_protocol.png" class="project-image" alt="Baker Design 2 Placeholder" style="margin-left: 50px;"></center>
+      <center><div class="image-caption" style="margin-left: 50px;">Overview of the in-lab experimental protocol for validating the proteolytic efficiency of 
+        de novo designed enzymes.</div></center>
+      <br>
     </div>
-    <br>
     <br>
   </p>
   {% include photo-gallery.html %}
