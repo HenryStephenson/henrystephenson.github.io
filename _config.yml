@@ -26,6 +26,8 @@ external:                  # shows a footer with social links - for available ic
   - {title: Mail, icon: envelope, url: "mailto:edward.stephenson@mail.mcgill.ca"}
   - {title: LinkedIn, icon: linkedin, url: "https://www.linkedin.com/in/henry-steph"}
   - {title: Google Scholar, icon: researchgate, url: "https://scholar.google.ca/citations?user=JU_sQNkAAAAJ&hl=en&oi=ao"}
+  - {title: LinkedIn, icon: linkedin, url: "https://www.linkedin.com/in/henry-steph"}
+
 
 
 comments:
