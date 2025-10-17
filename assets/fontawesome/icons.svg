@@ -15,8 +15,9 @@ License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL
     {% assign icon_data = site.data.font-awesome.icons[icon] %}
     {% assign style = icon_data.styles[0] %}
     {% assign svg_obj = icon_data.svg[style] %}
-    <symbol id="{{ icon }}" viewBox="0 0 {{ svg_obj.width }} {{ svg_obj.height }}">
-      <path d="{{ svg_obj.path }}" />
+    <!-- Use the raw SVG and inject it as a symbol -->
+    <symbol id="{{ icon }}" viewBox="{{ svg_obj.viewBox | join: ' ' }}">
+      {{ svg_obj.raw | replace: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="' | replace: '"></svg>', '' | strip }}
     </symbol>
   {% endfor %}
 {% endfor %}
