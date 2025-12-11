@@ -52,11 +52,15 @@
         {%- if item.icon -%}
           {%- assign icon_name = item.icon -%}
           {%- assign icon_entry = site.data.font_awesome.icons[icon_name] -%}
-          {%- assign style = icon_entry.styles[0] -%}
-          {%- assign svg_obj = icon_entry.svg[style] -%}
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="{{ svg_obj.viewBox | join: ' ' }}">
-            {{ svg_obj.path }}
-          </svg>
+          {%- if icon_entry -%}
+            {%- assign style = icon_entry.styles[0] -%}
+            {%- assign svg_obj = icon_entry.svg[style] -%}
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="{{ svg_obj.viewBox | join: ' ' }}">
+              {{ svg_obj.path }}
+            </svg>
+          {%- else -%}
+            {{ title }}
+          {%- endif -%}
         {%- else -%}
           {{ title }}
         {%- endif -%}
