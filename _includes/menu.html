@@ -1,4 +1,4 @@
-<nav style="width: 100%;">
+<!--<nav style="width: 100%;">
   {%- for item in include.menu -%}
     {%- assign node = site.pages | where: "name", item.file | first -%}
     {%- assign url = item.url | default: node.url -%}
@@ -34,7 +34,57 @@
         </svg>
     </a>
   </div>
+</nav>-->
+
+
+
+
+
+
+
+<nav style="width: 100%;">
+  {%- for item in include.menu -%}
+    {%- assign node = site.pages | where: "name", item.file | first -%}
+    {%- assign url = item.url | default: node.url -%}
+    {%- assign title = item.title | default: node.title -%}
+    <div class="nav-item">
+      <a href="{{ url | relative_url }}" {% if url == page.url %}class="selected"{% endif %}>
+        {%- if item.icon -%}
+          {%- assign icon_name = item.icon -%}
+          {%- assign icon_entry = site.data.font_awesome.icons[icon_name] -%}
+          {%- assign style = icon_entry.styles[0] -%}
+          {%- assign svg_obj = icon_entry.svg[style] -%}
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="{{ svg_obj.viewBox | join: ' ' }}">
+            {{ svg_obj.path }}
+          </svg>
+        {%- else -%}
+          {{ title }}
+        {%- endif -%}
+      </a>
+
+      {%- if item.submenu -%}
+        <div class="dropdown">
+          {%- for subitem in item.submenu -%}
+            {%- assign subnode = site.pages | where: "name", subitem.file | first -%}
+            {%- assign suburl = subitem.url | default: subnode.url -%}
+            {%- assign subtitle = subitem.title | default: subnode.title -%}
+            <a href="{{ suburl | relative_url }}">
+              {%- if subitem.icon -%}
+                {%- assign sub_icon_name = subitem.icon -%}
+                {%- assign sub_icon_entry = site.data.font_awesome.icons[sub_icon_name] -%}
+                {%- assign sub_style = sub_icon_entry.styles[0] -%}
+                {%- assign sub_svg_obj = sub_icon_entry.svg[sub_style] -%}
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="{{ sub_svg_obj.viewBox | join: ' ' }}">
+                  {{ sub_svg_obj.path }}
+                </svg>
+              {%- else -%}
+                {{ subtitle }}
+              {%- endif -%}
+            </a>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+  {%- endfor -%}
 </nav>
-
-
-
