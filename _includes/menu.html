@@ -24,20 +24,24 @@
   {%- endfor -%}
 </nav>
 
+<!-- Right-align wrapper for footer icons -->
+<div id="footer-icons" style="display: flex; justify-content: flex-end; gap: 10px;"></div>
+
 <script>
-  // Path to your public JSON file
   const jsonPath = '/assets/fontawesome/icons.json';
 
   fetch(jsonPath)
     .then(resp => resp.json())
     .then(icons => {
-      // Replace all menu items that have data-icon-name
+      const footerContainer = document.getElementById('footer-icons');
+
+      // Loop through menu items with data-icon-name
       document.querySelectorAll('[data-icon-name]').forEach(el => {
         const iconName = el.getAttribute('data-icon-name');
         if (!iconName || !icons[iconName]) return;
 
         const iconEntry = icons[iconName];
-        const style = iconEntry.styles[0]; // pick first style (solid/regular/brands)
+        const style = iconEntry.styles[0]; // pick first style
         const svgObj = iconEntry.svg[style];
         if (!svgObj) return;
 
@@ -45,18 +49,27 @@
         svg.setAttribute("class", "icon");
         svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
         svg.setAttribute("viewBox", svgObj.viewBox.join(' '));
+        svg.setAttribute("width", "24");  // optional size
+        svg.setAttribute("height", "24");
 
         const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
         path.setAttribute("d", svgObj.path);
         svg.appendChild(path);
 
-        // Prepend SVG to the link
+        // Clear link text and append SVG
         const link = el.querySelector('a');
-        if (link) link.insertBefore(svg, link.firstChild);
+        if (link) {
+          link.textContent = ''; // remove text
+          link.appendChild(svg);
+        }
+
+        // Optionally, also add the SVG to the right-aligned footer container
+        footerContainer.appendChild(svg.cloneNode(true));
       });
     })
     .catch(err => console.error("Failed to load icons JSON:", err));
 </script>
+
 
 
 
